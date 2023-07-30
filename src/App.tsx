@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// routing
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+//
 
-function App() {
+// styles
+import "./App.css";
+import "./style/style.css";
+//
+
+// components
+import MainLayout from "./components/MainLayoutComp/MainLayout";
+import HomePage from "./components/HomePageComp/HomePageComp";
+import Basket from "./components/BasketComp/BasketComp";
+//
+
+function App(): JSX.Element {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* BrowserRouter - осуществляет роутинг (перемещение), между страницами*/}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout></MainLayout>}>
+            <Route index element={<HomePage></HomePage>}></Route>
+            <Route path="basket" element={<Basket></Basket>}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
